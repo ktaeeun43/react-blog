@@ -11,10 +11,11 @@ const Menu = ({cat}) => {
         const res = await axios.get(`/posts/?cat=${cat}`);
         setPosts(res.data);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    }
-  })
+    };
+    fetchData();
+  }, [cat]);
 
     // const posts = [
     //     {
