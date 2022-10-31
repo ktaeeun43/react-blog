@@ -4,7 +4,7 @@ const userRoutes = require ("./routes/user.js")
 const postRoutes = require ("./routes/posts.js")
 const cookieParser = require("cookie-parser");
 const multer = require ("multer");
-
+const cors = require("cors")
 const app = express()
 
 app.use(express.json())
@@ -28,6 +28,8 @@ app.get("/hello", (req, res) => res.send("Hello"));
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/posts", postRoutes)
+app.use(cors());
+app.use(express.static("../client/build"));
 
 // index.html for all page routes    html or routing and naviagtion
 app.get("*", (req, res) => {
