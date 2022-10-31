@@ -1,9 +1,9 @@
-import express from "express"
-import authRoutes from "./routes/auth.js"
-import userRoutes from "./routes/user.js"
-import postRoutes from "./routes/posts.js"
-import cookieParser from "cookie-parser"
-import multer from "multer"
+const express = require("express");
+const authRoutes = require ("./routes/auth.js")
+const userRoutes = require ("./routes/user.js")
+const postRoutes = require ("./routes/posts.js")
+const cookieParser = require("cookie-parser");
+const multer = require ("multer");
 
 const app = express()
 

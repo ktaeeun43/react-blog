@@ -1,6 +1,6 @@
-import { db } from "../db.js"
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"
+const db = require ("../db.js");
+const bcrypt =require ("bcryptjs");
+const jwt = require ("jsonwebtoken")
 
 export const register = (req, res) => {
     

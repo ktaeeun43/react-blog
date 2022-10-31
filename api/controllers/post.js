@@ -1,5 +1,5 @@
-import { db } from "../db.js";
-import jwt from "jsonwebtoken";
+const db = require ("../db.js");
+const jwt = require("jsonwebtoken");
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
@@ -35,10 +35,9 @@ export const addPost = (req, res) => {
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    console.log(req.body,"유저정보2")
     const q =
-      "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
-
+    "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
+    
     const values = [
       req.body.title,
       req.body.desc,
@@ -47,8 +46,10 @@ export const addPost = (req, res) => {
       req.body.date,
       req.body.userId,
     ];
-
+    
+    console.log(values,"유저정보2")
     db.query(q, [values], (err, data) => {
+      console.log(err, "쿼리")
       if (err) return res.status(500).json(err);
       return res.json("Post has been created.");
     });
