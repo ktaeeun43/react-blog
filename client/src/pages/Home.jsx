@@ -13,16 +13,14 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${cat}`)
-        setPosts(res.data)
-        console.log(posts.img, "이미지")
-        console.log(res, "홈")
-      } catch(err) {
-        console.log(err)
+        const res = await axios.get(`/posts${cat}`);
+        setPosts(res.data);
+      } catch (err) {
+        console.log(err);
       }
-    }
+    };
     fetchData();
-  }, [cat])
+  }, [cat]);
 
 
   const getText = (html) =>{
