@@ -1,7 +1,7 @@
 const db = require ("../db.js");
 const jwt = require("jsonwebtoken");
 
-export const getPosts = (req, res) => {
+const getPosts = (req, res) => {
   const q = req.query.cat
     ? "SELECT * FROM posts WHERE cat=?"
     : "SELECT * FROM posts";
@@ -13,7 +13,7 @@ export const getPosts = (req, res) => {
   });
 };
 
-export const getPost = (req, res) => {
+const getPost = (req, res) => {
   console.log(req.url.split('/')[1],"겟id")
   let id = req.url.split('/')[1]
   const q =
@@ -26,7 +26,7 @@ export const getPost = (req, res) => {
   });
 };
 
-export const addPost = (req, res) => {
+const addPost = (req, res) => {
   console.log(req, "글쓰기2")
 
   const token = req.cookies.access_token;
@@ -56,7 +56,7 @@ export const addPost = (req, res) => {
   });
 };
 
-export const deletePost = (req, res) => {
+const deletePost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -74,7 +74,7 @@ export const deletePost = (req, res) => {
   });
 };
 
-export const updatePost = (req, res) => {
+const updatePost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -93,3 +93,5 @@ export const updatePost = (req, res) => {
     });
   });
 };
+
+module.exports = { getPosts, getPost, addPost, deletePost, updatePost };
