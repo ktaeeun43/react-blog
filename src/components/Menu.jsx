@@ -53,7 +53,7 @@ const Menu = ({cat}) => {
                 <h2>{post.title}</h2>
                 <button>Read More</button>
             </div>
-        ))}
+        ))}  
     </div>
   )
 }

@@ -11,6 +11,7 @@ import DOMPurify from "dompurify";
 
 const Single = () => {
   const [post, setPost] = useState({});
+  const [user, setUser] = useState("");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ const Single = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`https://api.taeeun.world/api/posts/${postId}`);
-        
+        if (currentUser) {
+          setUser(currentUser.username)
+        }
         console.log(res,"글조회")
         setPost(res.data);
       } catch (err) {
@@ -60,14 +63,15 @@ const Single = () => {
             <span>{post.username}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
-          {currentUser.username === post.username && (
-            <div className="edit">
-              <Link to={`/write?edit=2`} state={post}>
-                <img src={Edit} alt="" />
-              </Link>
-              <img onClick={handleDelete} src={Delete} alt="" />
-            </div>
-          )}
+          {currentUser ?( user === post.username 
+            ? <div className="edit">
+            <Link to={`/write?edit=2`} state={post}>
+              <img src={Edit} alt="" />
+            </Link>
+            <img onClick={handleDelete} src={Delete} alt="" />
+          </div> 
+            : null
+          ) : null}
         </div>
         <h1>{post.title}</h1>
         <p
@@ -81,3 +85,4 @@ const Single = () => {
 };
 
 export default Single;
+
