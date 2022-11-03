@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${cat}`);
+        const res = await axios.get(`https://api.taeeun.world/api/posts${cat}`);
         console.log(res, "포스트")
         setPosts(res.data);
       } catch (err) {

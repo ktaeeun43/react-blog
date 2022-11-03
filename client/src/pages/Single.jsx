@@ -22,7 +22,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/${postId}`);
+        const res = await axios.get(`https://api.taeeun.world/api/posts/${postId}`);
         
         console.log(res,"글조회")
         setPost(res.data);
@@ -35,7 +35,7 @@ const Single = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`/posts/${postId}`);
+      await axios.delete(`https://api.taeeun.world/api/posts/${postId}`);
       navigate("/")
     } catch (err) {
       console.log(err);

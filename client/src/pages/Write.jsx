@@ -21,7 +21,7 @@ const Write = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/upload", formData);
+      const res = await axios.post("https://api.taeeun.world/api/upload", formData);
       console.log(res, "이미지")
       return res.data;
     } catch (err) {
@@ -35,14 +35,14 @@ const Write = () => {
 
     try {
       state
-        ? await axios.put(`/posts/${state.id}`, {
+        ? await axios.put(`https://api.taeeun.world/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
             img: file ? imgUrl : "",
             userId: currentUser.id,
           })
-        : await axios.post(`/posts/`, {
+        : await axios.post(`https://api.taeeun.world/api/posts/`, {
             title,
             desc: value,
             cat,
