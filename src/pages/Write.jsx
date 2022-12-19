@@ -14,7 +14,6 @@ const Write = () => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-  console.log(currentUser.id,"유저")
   const navigate = useNavigate()
 
   const upload = async () => {
@@ -52,6 +51,7 @@ const Write = () => {
           });
           navigate("/")
     } catch (err) {
+      alert("로그인 후 글쓰기 가능합니다.")
       console.log(err);
     }
   };
